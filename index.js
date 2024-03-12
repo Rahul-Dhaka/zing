@@ -16,6 +16,10 @@ app.get("/", (req, res) => {
   res.render("zing");
 });
 
+app.get("/ping", (req, res) => {
+  res.send('pong');
+});
+
 const onConnection = (socket)=>{
   require('./utility/chattingApp')(socket,io);
 };
