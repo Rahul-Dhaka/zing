@@ -7,13 +7,21 @@ const { Server } = require("socket.io");
 const httpServer = createServer(app);
 const io = new Server(httpServer);
 
-app.set("view engine", "hbs");
+// for vercel
+var exphbs  = require('express-handlebars');
+var hbs = exphbs.create({ /* config */ });
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+app.set('views', './views');
+// ----end for vercel
+
+// app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.render("zing");
+  res.render("zing.hbs");
 });
 
 app.get("/ping", (req, res) => {
