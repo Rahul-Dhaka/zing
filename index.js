@@ -15,7 +15,7 @@ const io = new Server(httpServer);
 // app.set('view engine', 'handlebars');
 // app.set('views', './views');
 
-hbs.registerPartials(__dirname + "/views/partials");
+// hbs.registerPartials(__dirname + "/views/partials");
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
 // ----end for vercel
