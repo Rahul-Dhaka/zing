@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.render("zing.hbs");
+  res.render("zing");
 });
 
 app.get("/ping", (req, res) => {
