@@ -4,15 +4,20 @@ const app = new express();
 const PORT = 4422;
 const { createServer } = require("http");
 const { Server } = require("socket.io");
+const hbs= require('hbs');
 const httpServer = createServer(app);
 const io = new Server(httpServer);
 
 // for vercel
-var exphbs  = require('express-handlebars');
-var hbs = exphbs.create({ /* config */ });
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-app.set('views', './views');
+// var exphbs  = require('express-handlebars');
+// var hbs = exphbs.create({ /* config */ });
+// app.engine('handlebars', hbs.engine);
+// app.set('view engine', 'handlebars');
+// app.set('views', './views');
+
+hbs.registerPartials(__dirname + "/views/partials");
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "views"));
 // ----end for vercel
 
 // app.set("view engine", "hbs");
